@@ -1,7 +1,23 @@
 {
-	"compilerOptions": {
-		"target": "es6",
-		"noEmit": true,
-		"noImplicitAny": true
-	}
+    "compilerOptions": {
+        "module": "commonjs",
+        "lib": [
+            "es6",
+            "dom"
+        ],
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "strictNullChecks": true,
+        "baseUrl": "../",
+        "typeRoots": [
+            "../"
+        ],
+        "types": [],
+        "noEmit": true,
+        "forceConsistentCasingInFileNames": true
+    },
+    "files": [
+        "index.d.ts",
+        "vis-tests.ts"
+    ]
 }
