@@ -231,7 +231,7 @@ declare namespace __vis {
       queue?: any | boolean;
   }
 
-  export class DataSet<T extends DataItem | DataGroup | INode | IEdge> {
+  export class DataSet<T extends DataItem | DataGroup | INode | IEdge | IGraphData> {
     /**
      * The number of items in the DataSet.
      *
@@ -1762,12 +1762,12 @@ declare namespace __vis {
      * Creates an instance of Graph2d.
      *
      * @param {HTMLElement} container the HTML element representing the Graph2d container
-     * @param {IData} data Graph2d data
-     * @param {IOptions} [options] optional Graph2d options
+     * @param {DataSet<IGraphData[]>} data Graph2d data
+     * @param {IGraphOptions} [options] optional Graph2d options
      *
      * @memberOf Graph2d
      */
-    constructor(container: HTMLElement, data: IData, options?: IOptions);
+    constructor(container: HTMLElement, data: DataSet<IGraphData>, options?: IGraphOptions);
 
     /**
     * Destroy the Graph2d. The Graph2d is removed from memory. all DOM elements and event listeners are cleaned up.
@@ -1935,6 +1935,16 @@ declare namespace __vis {
 
   export interface IMoveGraph2dOptions {
     animate: boolean | number;
+  }
+
+  export interface IGraphOptions {
+      start?: Date | string;
+      end?: Date | string;
+  }
+
+  export interface IGraphData {
+      x?: Date | string;
+      y?: number;
   }
 
   type Graph2dEvents =
