@@ -1744,12 +1744,12 @@ export class Graph2d {
    * Creates an instance of Graph2d.
    *
    * @param {HTMLElement} container the HTML element representing the Graph2d container
-   * @param {DataSet<IGraphData[]>} data Graph2d data
+   * @param {DataSet<GraphItem[]>} data Graph2d data
    * @param {IGraphOptions} [options] optional Graph2d options
    *
    * @memberOf Graph2d
    */
-  constructor(container: HTMLElement, data: DataSet<IGraphData>, options?: IGraphOptions);
+  constructor(container: HTMLElement, data: DataSet<GraphItem>, options?: IGraphOptions);
 
   /**
   * Destroy the Graph2d. The Graph2d is removed from memory. all DOM elements and event listeners are cleaned up.
@@ -1924,11 +1924,6 @@ export interface IGraphOptions {
     end?: Date | string;
 }
 
-export interface IGraphData {
-    x?: Date | string;
-    y?: number;
-}
-
 type Graph2dEvents =
  'currentTimeTick' |
  'click' |
@@ -1939,8 +1934,8 @@ type Graph2dEvents =
  'rangechanged' |
  'timechange' |
  'timechanged';
-    
-export interface Item {
+
+export interface GraphItem {
   x: Date;
   y: number;
   group?: number | string;
@@ -1971,7 +1966,7 @@ export interface GroupOptions {
   };
 
   drawPoints?: boolean | {
-    onRender?: (a: Item, b: Group, c: Graph2d) => any,
+    onRender?: (a: GraphItem, b: Group, c: Graph2d) => any,
     className?: any,
     size?: number,
     style?: string,
@@ -2003,7 +1998,7 @@ export interface GroupOptions {
   excludeFromStacking?: boolean;
 }
 
-export interface Graph2dOptions extends GroupOptions extends TimelineOptions {
+export interface Graph2dOptions extends GroupOptions, TimelineOptions {
   defaultGroup?: string;
   dataAxis?: {
     alignZeros?: boolean,
@@ -2029,7 +2024,6 @@ export interface Graph2dOptions extends GroupOptions extends TimelineOptions {
       position?: boolean,
     },
   };
-  moment?: (Date) => Date;
   stack?: boolean;
   shaded?: boolean | {
     enabled?: boolean,
