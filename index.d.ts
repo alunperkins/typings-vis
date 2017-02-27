@@ -1969,7 +1969,7 @@ export interface GroupOptions {
     minWidth?: number,
   };
 
-  drawPoints?: boolean | (a: Item, b: Group) => any | {
+  drawPoints?: boolean | {
     onRender?: (a: Item, b: Group, c: Graph2d) => any,
     className?: any,
     size?: number,
