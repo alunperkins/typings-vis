@@ -1939,5 +1939,125 @@ type Graph2dEvents =
  'rangechanged' |
  'timechange' |
  'timechanged';
+    
+export interface Item {
+  x: Date;
+  y: number;
+  group?: number | string;
+  label?: {
+    content: any, // string or number for best results, but any is allowed...
+    xOffset: number,
+    yOffset: number,
+    className: any, // not sure what this is...
+  };
+}
+
+export interface Group {
+  id: string | number;
+  content: string; // can be html
+  className?: any;
+  style?: string;
+  options?: GroupOptions;
+  visible?: boolean;
+}
+
+export interface GroupOptions {
+
+  barChart?: {
+    align?: string,
+    sideBySide?: boolean,
+    width?: number,
+    minWidth?: number,
+  };
+
+  drawPoints?: boolean | (a: Item, b: Group) => any | {
+    onRender?: (a: Item, b: Group, c: Graph2d) => any,
+    className?: any,
+    size?: number,
+    style?: string,
+    enabled?: boolean,
+  };
+
+  interpolation?: boolean | {
+    enabled?: boolean,
+    parametrization?: string,
+  };
+
+  sampling?: boolean;
+
+  sort?: boolean;
+
+  shaded?: {
+    enabled?: boolean,
+    orientation?: string,
+    groupId?: string,
+    style?: string,
+  };
+
+  style?: string;
+
+  yAxisOrientation?: string;
+
+  excludeFromLegend?: boolean;
+
+  excludeFromStacking?: boolean;
+}
+
+export interface Graph2dOptions extends GroupOptions extends TimelineOptions {
+  defaultGroup?: string;
+  dataAxis?: {
+    alignZeros?: boolean,
+    icons?: boolean,
+    left?: AxisOptions,
+    right?: AxisOptions,
+    showMinorLabels?: boolean,
+    showMajorLabels?: boolean,
+    visible?: boolean,
+    width?: number | string,
+  };
+  graphHeight?: number | string;
+  groups?: {visibility: Object}; // visibility Object should be (groupId: boolean, ...) for each group
+  legend?: {
+    enabled?: boolean,
+    icons?: boolean,
+    left?: {
+      visible?: boolean,
+      position?: boolean,
+    },
+    right?: {
+      visible?: boolean,
+      position?: boolean,
+    },
+  };
+  moment?: (Date) => Date;
+  stack?: boolean;
+  shaded?: boolean | {
+    enabled?: boolean,
+    orientation?: string,
+    groupId?: string,
+    style?: string,
+  };
+  style?: string;
+  yAxisOrientation?: string;
+  excludeFromLegend?: boolean;
+  excludeFromStacking?: boolean;
+}
+
+export interface AxisOptions {
+  format?: (x: number) => string;
+  range?: {
+    min?: number,
+    max?: number,
+  };
+  title?: {
+    style?: string,
+    text?: string,
+  };
+  showMinorLabels?: boolean;
+  showMajorLabels?: boolean;
+  visible?: boolean;
+  width?: number | string;
+}
+
 
 export as namespace vis;
