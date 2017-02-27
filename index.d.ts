@@ -1745,11 +1745,11 @@ export class Graph2d {
    *
    * @param {HTMLElement} container the HTML element representing the Graph2d container
    * @param {DataSet<GraphItem[]>} data Graph2d data
-   * @param {IGraphOptions} [options] optional Graph2d options
+   * @param {Graph2dOptions} [options] optional Graph2d options
    *
    * @memberOf Graph2d
    */
-  constructor(container: HTMLElement, data: DataSet<GraphItem>, options?: IGraphOptions);
+  constructor(container: HTMLElement, data: DataSet<GraphItem>, options?: Graph2dOptions);
 
   /**
   * Destroy the Graph2d. The Graph2d is removed from memory. all DOM elements and event listeners are cleaned up.
@@ -1917,11 +1917,6 @@ export interface IEventProperties {
 
 export interface IMoveGraph2dOptions {
   animate: boolean | number;
-}
-
-export interface IGraphOptions {
-    start?: Date | string;
-    end?: Date | string;
 }
 
 type Graph2dEvents =
