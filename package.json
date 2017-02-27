@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trekdev/typings-vis.git"
+    "url": "git+https://github.com/alunperkins/typings-vis.git"
   },
   "scripts": {
     "lint": "node_modules/.bin/tslint index.d.ts -c tslint.json",
