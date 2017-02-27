@@ -125,6 +125,7 @@ interface TimelineOptions {
   maxMinorChars?: number;
   min?: DateType;
   minHeight?: HeightWidthType;
+  moment?: (d: Date) => Date;
   moveable?: boolean;
   multiselect?: boolean;
   multiselectPerGroup?: boolean;
