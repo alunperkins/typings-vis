@@ -1750,6 +1750,7 @@ export class Graph2d {
    * @memberOf Graph2d
    */
   constructor(container: HTMLElement, data: DataSet<GraphItem>, options?: Graph2dOptions);
+  constructor(container: HTMLElement, data: DataSet<GraphItem>, groups: DataSet<Group>, options?: Graph2dOptions);
 
   /**
   * Destroy the Graph2d. The Graph2d is removed from memory. all DOM elements and event listeners are cleaned up.
@@ -1966,7 +1967,7 @@ export interface GroupOptions {
     size?: number,
     style?: string,
     enabled?: boolean,
-  };
+  }; // please note, drawPoints could be also a function. This case is not represented here
 
   interpolation?: boolean | {
     enabled?: boolean,
