@@ -419,7 +419,7 @@ export class DataSet<T extends DataItem | DataGroup | Node | Edge> {
    *
    * @memberOf DataSet
    */
-  off(event: string, callback: (event: string, properties: any, senderId: IdType) => void): void;
+  off(event: string, callback?: (event: string, properties: any, senderId: IdType) => void): void;
 
   /**
    * Remove one or more items by id.
